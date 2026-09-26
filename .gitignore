@@ -141,3 +141,17 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# .NET / Visual Studio / JetBrains
+bin/
+obj/
+*.user
+*.userosscache
+*.sln.docstates
+.vs/
+.idea/
+*.suo
+*.userprefs
+appsettings.Development.json
+appsettings.Local.json
+

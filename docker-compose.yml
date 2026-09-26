@@ -1,0 +1,59 @@
+services:
+  m8-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: m8-notificaciones-api
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=m8_soporte_db;Username=postgres;Password=postgrespassword
+      - RabbitMQ__Host=rabbitmq
+      - RabbitMQ__Port=5672
+      - Redis__ConnectionString=redis:6379
+    depends_on:
+      - postgres
+      - rabbitmq
+      - redis
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: m8-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: m8_soporte_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  rabbitmq:
+    image: rabbitmq:3.13-management-alpine
+    container_name: m8-rabbitmq
+    restart: unless-stopped
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    ports:
+      - "5672:5672"     # Puerto AMQP para microservicios
+      - "15672:15672"   # Panel de control web (http://localhost:15672)
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
+  redis:
+    image: redis:7-alpine
+    container_name: m8-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"     # Cache para tokens temporales de QR
+    volumes:
+      - redis_data:/data
+
+volumes:
+  postgres_data:
+  rabbitmq_data:
+  redis_data:
