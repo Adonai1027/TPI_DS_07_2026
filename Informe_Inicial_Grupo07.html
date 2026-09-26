@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Informe Inicial - Módulo 8 (Grupo 07) - TPI Desarrollo de Software 2026</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm 15mm 18mm 15mm;
+      @bottom-right {
+        content: counter(page) " de " counter(pages);
+        font-size: 9pt;
+        color: #64748B;
+      }
+    }
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+      color: #1E293B;
+      line-height: 1.5;
+      font-size: 10.5pt;
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      border-bottom: 2.5px solid #4F46E5;
+      padding-bottom: 12px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .header h1 {
+      font-size: 20pt;
+      color: #0F172A;
+      margin: 0 0 4px 0;
+      font-weight: 800;
+    }
+    .header .subtitle {
+      font-size: 11pt;
+      color: #4F46E5;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .header .meta {
+      text-align: right;
+      font-size: 9pt;
+      color: #64748B;
+    }
+    h2 {
+      color: #1E293B;
+      font-size: 13.5pt;
+      border-left: 4px solid #4F46E5;
+      padding-left: 8px;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    h3 {
+      color: #334155;
+      font-size: 11pt;
+      margin-top: 14px;
+      margin-bottom: 6px;
+    }
+    p {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      font-size: 8.5pt;
+      font-weight: 600;
+      border-radius: 4px;
+      background-color: #EEF2FF;
+      color: #4338CA;
+      border: 1px solid #C7D2FE;
+    }
+    .card {
+      background-color: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 14px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .cell-card {
+      background-color: #FFFFFF;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 8px;
+      padding: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .cell-card h4 {
+      margin: 0 0 6px 0;
+      font-size: 10.5pt;
+      color: #4F46E5;
+    }
+    .cell-card ul {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 9pt;
+      color: #475569;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      margin-bottom: 16px;
+      font-size: 9.5pt;
+    }
+    th, td {
+      border: 1px solid #CBD5E1;
+      padding: 7px 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #F1F5F9;
+      color: #0F172A;
+      font-weight: 700;
+    }
+    tr:nth-child(even) {
+      background-color: #F8FAFC;
+    }
+    code {
+      font-family: Consolas, 'Courier New', monospace;
+      background-color: #F1F5F9;
+      color: #0F172A;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-size: 9pt;
+      border: 1px solid #E2E8F0;
+    }
+    pre {
+      background-color: #0F172A;
+      color: #F8FAFC;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 8.5pt;
+      overflow-x: auto;
+      margin-top: 4px;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    .page-break {
+      page-break-before: always;
+    }
+    .footer-note {
+      margin-top: 24px;
+      padding: 10px 14px;
+      background-color: #ECFDF5;
+      border: 1px solid #A7F3D0;
+      border-radius: 6px;
+      color: #065F46;
+      font-size: 9pt;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <div class="subtitle">UTN FRRe • Desarrollo de Software 2026</div>
+      <h1>Módulo 8: Notificaciones, Documentos y Soporte</h1>
+      <span class="badge">Grupo 07</span>
+      <span class="badge" style="background:#ECFDF5; color:#065F46; border-color:#A7F3D0;">Estado: Arquitectura Base Configurada</span>
+    </div>
+    <div class="meta">
+      <strong>Repositorio:</strong> Adonai1027/TPI_DS_07_2026<br>
+      <strong>Fecha:</strong> Septiembre 2026<br>
+      <strong>Stack:</strong> .NET 8 / C# / Docker / Postgres
+    </div>
+  </div>
+
+  <!-- SECCIÓN 1 -->
+  <h2>1. Alcance y Responsabilidades de Nuestro Módulo (M8)</h2>
+  <p>
+    En la plataforma de movilidad urbana distribuida, el <strong>Grupo 07</strong> es responsable exclusivo del 
+    <strong>Módulo 8</strong>. Es un microservicio orientado a eventos que asiste al ciclo de vida del viaje y a los demás módulos:
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 15%;">Requerimiento</th>
+        <th style="width: 30%;">Nombre</th>
+        <th>Descripción Funcional</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>RF-8.1 / 8.2</code></td>
+        <td><strong>Notificaciones</strong></td>
+        <td>Envío de avisos automáticos ante hitos de viaje y reservas (solicitud, arribo, inicio, cobro) por Email, Push o SMS.</td>
+      </tr>
+      <tr>
+        <td><code>RF-8.3</code></td>
+        <td><strong>QR de Verificación</strong></td>
+        <td>Generación de código QR seguro, temporal y de un solo uso para autorizar el inicio del viaje entre pasajero y chofer.</td>
+      </tr>
+      <tr>
+        <td><code>RF-8.4 / 8.5</code></td>
+        <td><strong>Comprobante PDF</strong></td>
+        <td>Generación dinámica de comprobantes de pago/viaje en formato PDF descargable y servicio de reenvío por correo.</td>
+      </tr>
+      <tr>
+        <td><code>RF-8.6</code></td>
+        <td><strong>Trazabilidad y Reintentos</strong></td>
+        <td>Monitoreo de estado de entrega de notificaciones (Pendiente, Enviado, Fallido) y política de reintentos controlados.</td>
+      </tr>
+      <tr>
+        <td><code>RF-8.7</code></td>
+        <td><strong>Tickets de Soporte</strong></td>
+        <td>Sistema CRUD para gestionar reclamos de usuarios asociados a un viaje, reserva o pago específico.</td>
+      </tr>
+      <tr>
+        <td><code>RF-8.8</code></td>
+        <td><strong>Consumo Asíncrono</strong></td>
+        <td>Procesamiento desacoplado de eventos recibidos por cola de mensajería (RabbitMQ) sin bloquear el flujo principal.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SECCIÓN 2 -->
+  <h2>2. Decisiones de Arquitectura y Stack Tecnológico</h2>
+  <p>
+    Aprovechando la <strong>Libertad Tecnológica (RNF-01)</strong>, se seleccionó un ecosistema enterprise moderno, de alta demanda laboral y 
+    robusto para coordinar a 9 personas sin fricciones:
+  </p>
+
+  <div class="card">
+    <table style="margin: 0; border: none;">
+      <tr style="background: none;"><td style="border: none; width: 25%;"><strong>Lenguaje y Framework:</strong></td><td style="border: none;"><strong>C# con .NET 8 (Web API)</strong>. Tipado estático estricto para evitar errores en tiempo de ejecución, inyección de dependencias nativa y alto rendimiento.</td></tr>
+      <tr style="background: none;"><td style="border: none;"><strong>Contratos de API (RNF-03):</strong></td><td style="border: none;"><strong>OpenAPI Specification (Swagger)</strong>. Documentación viva e interactiva autogenerada a partir del código.</td></tr>
+      <tr style="background: none;"><td style="border: none;"><strong>Base de Datos (RNF-05):</strong></td><td style="border: none;"><strong>PostgreSQL 16</strong> gestionado mediante <strong>Entity Framework Core 8 (EF Core)</strong> con migraciones Code-First automáticas.</td></tr>
+      <tr style="background: none;"><td style="border: none;"><strong>Mensajería (RNF-10):</strong></td><td style="border: none;"><strong>RabbitMQ 3.13</strong> para la recepción de eventos asíncronos de Viajes (M6), Despacho (M5) y Pagos (M7).</td></tr>
+      <tr style="background: none;"><td style="border: none;"><strong>Caché y TTL (RNF-11):</strong></td><td style="border: none;"><strong>Redis 7</strong> para almacenamiento en memoria de tokens QR con tiempo de vida configurable (expiración automática de 10 min).</td></tr>
+      <tr style="background: none;"><td style="border: none;"><strong>Contenedores (RNF-04):</strong></td><td style="border: none;"><strong>Docker & Docker Compose</strong> con builds multi-etapa para levantar todo el entorno con un solo comando.</td></tr>
+    </table>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- SECCIÓN 3 -->
+  <h2>3. Organización del Equipo: 3 Células de Trabajo (3 Personas c/u)</h2>
+  <p>
+    Para evitar que 9 personas editen los mismos archivos y sufran colisiones en Git, el código se organizó bajo la arquitectura 
+    <strong>Vertical Slices (Carpetas por Funcionalidad)</strong>. Cada célula es dueña de su dominio:
+  </p>
+
+  <div class="grid-3">
+    <div class="cell-card">
+      <h4>📧 Célula 1: Notificaciones</h4>
+      <p style="font-size: 8.5pt; color: #64748B;">Requerimientos: RF-8.1, 8.2, 8.6, 8.8</p>
+      <ul>
+        <li>Consumidores RabbitMQ (MassTransit)</li>
+        <li>Servicio de envío de Emails con plantillas</li>
+        <li>Notificaciones Push y SMS</li>
+        <li>Lógica de reintentos y auditoría</li>
+      </ul>
+      <p style="font-size: 8.5pt; margin-top: 8px;"><strong>Carpeta:</strong> <code>Features/Notificaciones</code></p>
+    </div>
+
+    <div class="cell-card">
+      <h4>📄 Célula 2: Documentos & QR</h4>
+      <p style="font-size: 8.5pt; color: #64748B;">Requerimientos: RF-8.3, 8.4, 8.5, RNF-11</p>
+      <ul>
+        <li>Diseño de factura/recibo en PDF con QuestPDF</li>
+        <li>Generador de códigos QR con QRCoder</li>
+        <li>Tokens temporales en Redis con TTL</li>
+        <li>Descarga y reenvío de comprobantes</li>
+      </ul>
+      <p style="font-size: 8.5pt; margin-top: 8px;"><strong>Carpeta:</strong> <code>Features/Documentos</code></p>
+    </div>
+
+    <div class="cell-card">
+      <h4>🎫 Célula 3: Soporte & Datos</h4>
+      <p style="font-size: 8.5pt; color: #64748B;">Requerimientos: RF-8.7, RNF-03, RNF-05</p>
+      <ul>
+        <li>CRUD de Tickets de Soporte</li>
+        <li>Transiciones de estado de reclamos</li>
+        <li>Modelo relacional y migraciones EF Core</li>
+        <li>Mantenimiento de contratos OpenAPI</li>
+      </ul>
+      <p style="font-size: 8.5pt; margin-top: 8px;"><strong>Carpeta:</strong> <code>Features/Soporte</code></p>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 4 -->
+  <h2>4. Metodología de Trabajo Profesional (Scrumban + Git Flow)</h2>
+  <div class="card">
+    <ul style="margin: 0; padding-left: 20px;">
+      <li><strong>Sprints de 2 semanas:</strong> Cada sprint concluye con una demo funcional de los requerimientos entregables.</li>
+      <li><strong>Tablero Kanban (GitHub Projects):</strong> Columnas: <em>Backlog ➔ To Do ➔ In Progress ➔ In Review (PR) ➔ Done</em>.</li>
+      <li><strong>Regla de oro de Git:</strong> La rama <code>main</code> está protegida. <strong>Nunca se comitea directo a main.</strong></li>
+      <li><strong>Flujo de trabajo diario:</strong>
+        <ol>
+          <li>Actualizar <code>main</code>: <code>git pull origin main</code></li>
+          <li>Crear rama de tarea: <code>git checkout -b feature/nombre-tarea</code></li>
+          <li>Hacer commits descriptivos (Conventional Commits).</li>
+          <li>Subir la rama y abrir un <strong>Pull Request</strong> en GitHub con al menos 1 revisión aprobada antes del merge.</li>
+        </ol>
+      </li>
+    </ul>
+  </div>
+
+  <!-- SECCIÓN 5 -->
+  <h2>5. Guía de Onboarding Paso a Paso (Para los 8 Compañeros)</h2>
+  <p>Cualquier integrante nuevo del grupo puede dejar su entorno listo en 10 minutos siguiendo estos pasos:</p>
+
+  <ol style="font-size: 9.5pt; padding-left: 20px;">
+    <li><strong>Aceptar invitación en GitHub:</strong> Revisar el correo y confirmar el acceso al repositorio <code>Adonai1027/TPI_DS_07_2026</code>.</li>
+    <li><strong>Instalar herramientas esenciales:</strong>
+      <ul>
+        <li><strong>.NET 8 SDK:</strong> Desde <a href="https://dotnet.microsoft.com/download/dotnet/8.0">dotnet.microsoft.com</a> o con <code>winget install Microsoft.DotNet.SDK.8</code>.</li>
+        <li><strong>Docker Desktop:</strong> Con soporte WSL2 activado.</li>
+      </ul>
+    </li>
+    <li><strong>Clonar el repositorio:</strong>
+      <pre>git clone https://github.com/Adonai1027/TPI_DS_07_2026.git
+cd TPI_DS_07_2026</pre>
+    </li>
+    <li><strong>Levantar la infraestructura (Base de Datos, RabbitMQ y Redis):</strong>
+      <pre>docker compose up -d</pre>
+      <em>(Panel de RabbitMQ disponible en: <a href="http://localhost:15672">http://localhost:15672</a> • Usuario: <code>guest</code> / Pass: <code>guest</code>)</em>
+    </li>
+    <li><strong>Ejecutar la API y verificar Swagger:</strong>
+      <pre>dotnet run --project src/M8.Notificaciones.Api</pre>
+      <em>Abre el navegador en la URL indicada en consola (ej. <code>http://localhost:5247</code>) y verás Swagger con todos los endpoints listos para probar. La base de datos PostgreSQL se sincronizará automáticamente al iniciar.</em>
+    </li>
+  </ol>
+
+  <!-- NOTA FINAL -->
+  <div class="footer-note">
+    <strong>✅ Estado al día de hoy:</strong> Arquitectura inicial creada, solución .NET 8 configurada con OpenAPI, Docker Compose operativo con PostgreSQL/RabbitMQ/Redis, persistencia EF Core conectada con migraciones automáticas y todo el código sincronizado en la rama <code>main</code> de GitHub.
+  </div>
+
+</body>
+</html>
