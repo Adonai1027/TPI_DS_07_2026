@@ -18,16 +18,19 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 // Configurar Entity Framework Core con PostgreSQL
-var connectionString = builder.Configuration.GetConnectionString("PostgresConnection") 
-    ?? "Host=localhost;Port=5432;Database=m8_soporte_db;Username=postgres;Password=postgrespassword";
+// Configurar Entity Framework Core con PostgreSQL
+// Configurar Entity Framework Core con PostgreSQL
+var connectionString = builder.Configuration.GetConnectionString("PostgresConnection")
+    ?? throw new InvalidOperationException("No se encontró la cadena de conexión 'PostgresConnection' en la configuración.");
 
 builder.Services.AddDbContext<M8DbContext>(options =>
     options.UseNpgsql(connectionString));
 
-var app = builder.Build();
+var app = builder.Build(); // <--- Esta es la línea que faltaba
 
 // Aplicar migraciones automáticas al iniciar la aplicación (RNF-05)
 using (var scope = app.Services.CreateScope())
+
 {
     var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
     try

@@ -9,7 +9,7 @@ services:
       - "8080:8080"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=m8_soporte_db;Username=postgres;Password=postgrespassword
+      - ConnectionStrings__PostgresConnection=Host=postgres;Port=5432;Database=m8_soporte_db;Username=postgres;Password=postgrespassword
       - RabbitMQ__Host=rabbitmq
       - RabbitMQ__Port=5672
       - Redis__ConnectionString=redis:6379
