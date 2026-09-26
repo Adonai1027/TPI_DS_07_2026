@@ -1,4 +1,6 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using M8.Notificaciones.Api.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +17,31 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+// Configurar Entity Framework Core con PostgreSQL
+var connectionString = builder.Configuration.GetConnectionString("PostgresConnection") 
+    ?? "Host=localhost;Port=5432;Database=m8_soporte_db;Username=postgres;Password=postgrespassword";
+
+builder.Services.AddDbContext<M8DbContext>(options =>
+    options.UseNpgsql(connectionString));
+
 var app = builder.Build();
+
+// Aplicar migraciones automáticas al iniciar la aplicación (RNF-05)
+using (var scope = app.Services.CreateScope())
+{
+    var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+    try
+    {
+        var db = scope.ServiceProvider.GetRequiredService<M8DbContext>();
+        logger.LogInformation("Verificando y aplicando migraciones pendientes de PostgreSQL...");
+        db.Database.Migrate();
+        logger.LogInformation("Base de datos de M8 sincronizada correctamente.");
+    }
+    catch (Exception ex)
+    {
+        logger.LogError(ex, "Error al conectar o aplicar migraciones a PostgreSQL. Asegúrate de que el contenedor de Docker 'm8-postgres' esté corriendo.");
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
