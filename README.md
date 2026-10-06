@@ -18,7 +18,7 @@
 | 28476  | Galfrascoli, Ángel | [@Anfras](https://github.com/Anfras) | angelgalfras@gmail.com |
 | 28480  | Rister, Matías Ezequiel | [@matiasristet02](https://github.com/matiasristet02) | matiasezerister@gmail.com |
 | 28889  | Bianciotto, Benjamín | [@Benjaminbainciotto](https://github.com/Benjaminbainciotto) | Benjaminbianciottofacultad@gmail.com |
-| 29777  | — *(David Gabriel)* | [@DabiZx](https://github.com/DabiZx) | davidgabriel_0306@hotmail.com |
+| 29777  | Cerdan, David Gabriel Esteban | [@DabiZx](https://github.com/DabiZx) | davidgabriel_0306@hotmail.com |
 
 ---
 
